@@ -529,6 +529,7 @@ def parse_factor(ctx: UmamusumeContext):
             match_result.matched_area[0][0]:match_result.matched_area[1][0]] = 0
             factor_info[0] = factor_name
             factor_info[1] = factor_level
+            log.info(f"{factor_name} : {factor_level}")
             factor_list.append(factor_info)
         else:
             break
