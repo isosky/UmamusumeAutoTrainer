@@ -191,6 +191,7 @@ def script_cultivate_event(ctx: UmamusumeContext):
         img = ctx.ctrl.get_screen()
         event_name, selector_list = parse_cultivate_event(ctx, img)
         choice_index = get_event_choice(ctx, event_name)
+        log.info(">>>>> %s 选择 %d", event_name, choice_index)
         # 意外情况容错
         if choice_index - 1 > len(selector_list):
             choice_index = 1

@@ -31,7 +31,8 @@ for k, v in attachment_data.items():
 task_executor = executor.Executor()
 task_executor.start(task)
 
-if 'factor_list' in task.detail.cultivate_result:
-    if len(task.detail.cultivate_result['factor_list']) > 0:
-        for i in task.detail.cultivate_result['factor_list']:
-            print(i)
+
+# if 'factor_list' in task.detail.cultivate_result:
+#     if len(task.detail.cultivate_result['factor_list']) > 0:
+#         for i in task.detail.cultivate_result['factor_list']:
+#             print(i)

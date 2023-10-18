@@ -16,7 +16,11 @@ event_map: dict[str, Union[callable, int]] = {
     "追加的自主训练": choose_two_from_two,
     "怎么办": choose_two_from_two,  # 无声铃鹿-逆时针
     "那家伙的存在": choose_two_from_two,  # 大和赤骥-跑日本德比
-    "啊，友情": bbxj_ayq
+    "啊，友情": bbxj_2,
+    "于夜晚独自奔跑": mccz_1,
+    "喜好静谧": choose_first_from_two,
+    "舞蹈课": choose_two_from_two,  # 大和赤骥 1：毅力+10,2:速度+10
+    "这也烦恼，那也烦恼！": tbz_3  # 特别周选项
 }
 
 event_name_list: list[str] = [*event_map]
@@ -28,6 +32,7 @@ def get_event_choice(ctx: UmamusumeContext, event_name: str) -> int:
         if event_name_normalized in event_map:
             opt = event_map[event_name_normalized]
             if type(opt) is int:
+                log.info(">>>>> %s 选择 %d", event_name, opt)
                 return opt
             if callable(opt):
                 return opt(ctx)
