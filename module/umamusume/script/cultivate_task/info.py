@@ -108,7 +108,11 @@ def script_info(ctx: UmamusumeContext):
             date = ctx.cultivate_detail.turn_info.date
             if date != -1:
                 if date <= 72:
-                    ctx.ctrl.click_by_point(TACTIC_LIST[ctx.cultivate_detail.tactic_list[int((date - 1)/ 24)] - 1])
+                    if date == 56:
+                        ctx.ctrl.click_by_point(TACTIC_LIST[2])
+                    else:
+                        ctx.ctrl.click_by_point(
+                            TACTIC_LIST[ctx.cultivate_detail.tactic_list[int((date - 1) / 24)] - 1])
                 else:
                     ctx.ctrl.click_by_point(TACTIC_LIST[ctx.cultivate_detail.tactic_list[2] - 1])
             time.sleep(0.5)
