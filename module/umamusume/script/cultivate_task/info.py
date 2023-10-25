@@ -73,8 +73,8 @@ def script_info(ctx: UmamusumeContext):
                 ctx.cultivate_detail.clock_used += 1
             else:
                 ctx.ctrl.click_by_point(RACE_FAIL_CONTINUE_CANCEL)
-            log.debug("闹钟限制%s,已使用%s", str(ctx.cultivate_detail.clock_use_limit),
-                      str(ctx.cultivate_detail.clock_used))
+            log.info("闹钟限制%s,已使用%s", str(ctx.cultivate_detail.clock_use_limit),
+                     str(ctx.cultivate_detail.clock_used))
         if title_text == TITLE[4]:
             ctx.ctrl.click_by_point(GET_TITLE_CONFIRM)
         if title_text == TITLE[5]:
@@ -146,4 +146,3 @@ def script_info(ctx: UmamusumeContext):
             elif image_match(ctx.ctrl.get_screen(to_gray=True), REF_RECOVER_TP_3).find_match:
                 ctx.ctrl.click_by_point(USE_TP_DRINK_RESULT_CLOSE)
         time.sleep(1)
-
