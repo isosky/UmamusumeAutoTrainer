@@ -32,13 +32,11 @@ def get_logger(name) -> Logger:
         console_handler.setLevel(logging.DEBUG)
         logger.addHandler(console_handler)
 
-        LOG_LEVEL = 'ERROR'
-        rolling_handler = TimedRotatingFileHandler(
-            LOG_FILE, when='midnight', interval=1)
-        rolling_handler.setLevel(LOG_LEVEL)
-        rolling_handler.setFormatter(Formatter(
+        file_handler = FileHandler(LOG_FILE)
+        file_handler.setLevel('ERROR')
+        file_handler.setFormatter(Formatter(
             ' %(asctime)s  %(levelname)-8s [%(funcName)34s] %(filename)-20s: %(message)s'))
-        logger.addHandler(rolling_handler)
+        logger.addHandler(file_handler)
         file_handler = FileHandler(LOG_TURN_FLIE)
         file_handler.setLevel('INFO')
         file_handler.setFormatter(Formatter(

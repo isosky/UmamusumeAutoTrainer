@@ -1,2 +1,2 @@
 .\venv\Scripts\activate
-python main.py
+python backend_runner.py

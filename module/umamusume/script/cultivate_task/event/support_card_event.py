@@ -62,3 +62,13 @@ def tbz_3(ctx: UmamusumeContext) -> int:
         return 1
     else:
         return 2
+
+
+def dzyy_2(ctx: UmamusumeContext) -> int:
+    """
+    第二年6月前都选2，惹人喜爱
+    """
+    if ctx.cultivate_detail.turn_info.date <= 36:
+        return 2
+    else:
+        return 1
