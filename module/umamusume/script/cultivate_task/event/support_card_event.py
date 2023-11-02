@@ -22,6 +22,15 @@ def choose_three_from_three(ctx: UmamusumeContext) -> int:
     return 3
 
 
+def tilipanduan(ctx: UmamusumeContext) -> int:
+    """
+
+    先不做逻辑了，直接返回2，30体力，可能长胖
+
+    """
+    return 2
+
+
 def bbxj_2(ctx: UmamusumeContext) -> int:
     """
     选项1：干劲+1，力量+1，羁绊加5
