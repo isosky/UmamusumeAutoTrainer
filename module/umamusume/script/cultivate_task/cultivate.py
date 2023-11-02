@@ -42,6 +42,7 @@ def script_cultivate_main_menu(ctx: UmamusumeContext):
     if (ctx.cultivate_detail.turn_info.uma_attribute.skill_point > ctx.cultivate_detail.learn_skill_threshold
             and not ctx.cultivate_detail.turn_info.turn_learn_skill_done):
         if len(ctx.cultivate_detail.learn_skill_list) > 0 or not ctx.cultivate_detail.learn_skill_only_user_provided:
+            cv2.imwrite('temp/skill_'+str(current_date)+"_"+str(int(time.time()))+'.jpg', img)
             ctx.ctrl.click_by_point(CULTIVATE_SKILL_LEARN)
         else:
             ctx.cultivate_detail.learn_skill_done = True
@@ -277,7 +278,8 @@ def script_cultivate_before_race(ctx: UmamusumeContext):
             p_check_tactic = tactic_check_point_list[ctx.cultivate_detail.tactic_list[2] - 1]
         # log.error(date)
         if date == 56 or date == 44:
-            p_check_tactic = tactic_check_point_list[2]
+            if ctx.task.task_desc != 'wanshansiji':
+                p_check_tactic = tactic_check_point_list[2]
         if compare_color_equal(p_check_tactic, [170, 170, 170]):
             ctx.ctrl.click_by_point(BEFORE_RACE_CHANGE_TACTIC)
             return
@@ -285,6 +287,10 @@ def script_cultivate_before_race(ctx: UmamusumeContext):
     if p_check_skip[0] < 200 and p_check_skip[1] < 200 and p_check_skip[2] < 200:
         ctx.ctrl.click_by_point(BEFORE_RACE_START)
     else:
+        date = ctx.cultivate_detail.turn_info.date
+        if (date == 56 or date == 44) and ctx.task.task_desc == 'wanshansiji':
+            img = ctx.ctrl.get_screen()
+            cv2.imwrite('temp/'+str(date)+"_"+str(int(time.time()))+'.jpg', img)
         ctx.ctrl.click_by_point(BEFORE_RACE_SKIP)
 
 
@@ -297,6 +303,10 @@ def script_in_race(ctx: UmamusumeContext):
 
 
 def script_cultivate_race_result(ctx: UmamusumeContext):
+    date = ctx.cultivate_detail.turn_info.date
+    if (date == 56 or date == 44) and ctx.task.task_desc == 'wanshansiji':
+        img = ctx.ctrl.get_screen()
+        cv2.imwrite('temp/'+str(date)+"_"+str(int(time.time()))+'.jpg', img)
     ctx.ctrl.click_by_point(RACE_RESULT_CONFIRM)
 
 
@@ -424,6 +434,7 @@ def script_cultivate_learn_skill(ctx: UmamusumeContext):
         if skill['available'] is False and ctx.cultivate_detail.learn_skill_list.__contains__(skill['skill_name']):
             ctx.cultivate_detail.learn_skill_list.remove(skill['skill_name'])
 
+    log.error(target_skill_list)
     # 点技能
     while True:
         img = ctx.ctrl.get_screen()
