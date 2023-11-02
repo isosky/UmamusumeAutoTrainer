@@ -21,7 +21,9 @@ event_map: dict[str, Union[callable, int]] = {
     "喜好静谧": choose_first_from_two,
     "舞蹈课": choose_two_from_two,  # 大和赤骥 1：毅力+10,2:速度+10
     "这也烦恼，那也烦恼！": tbz_3,  # 特别周选项
-    "媲美训练员的知识储备": choose_first_from_two  # 记者 1：10力量，2：10速
+    "媲美训练员的知识储备": choose_first_from_two,  # 记者 1：10力量，2：10速
+    "绝妙☆错误！": dzyy_2,
+    "贴心关怀也包在我身上人": choose_two_from_two
 }
 
 event_name_list: list[str] = [*event_map]

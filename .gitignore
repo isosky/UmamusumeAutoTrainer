@@ -3,3 +3,4 @@ venv
 userdata
 *.log
 *.pyc
+.vscode/*

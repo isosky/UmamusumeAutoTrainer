@@ -276,7 +276,7 @@ def script_cultivate_before_race(ctx: UmamusumeContext):
         else:
             p_check_tactic = tactic_check_point_list[ctx.cultivate_detail.tactic_list[2] - 1]
         # log.error(date)
-        if date == 56:
+        if date == 56 or date == 44:
             p_check_tactic = tactic_check_point_list[2]
         if compare_color_equal(p_check_tactic, [170, 170, 170]):
             ctx.ctrl.click_by_point(BEFORE_RACE_CHANGE_TACTIC)
