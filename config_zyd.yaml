@@ -1,0 +1,9 @@
+version: 0.0.1
+bot:
+  auto:
+    adb:
+      device_name: "127.0.0.1:16448" # 第1个
+      delay: 0.5
+    cpu_alloc: 6
+logs_name: 16448
+role_name: "张翼德"
