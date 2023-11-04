@@ -42,6 +42,7 @@ TITLE = [
     "活动剧情解锁",
     "确认",
     "回复训练值",
+    "选择养成难度"
 ]
 
 
@@ -146,4 +147,9 @@ def script_info(ctx: UmamusumeContext):
                 ctx.ctrl.click_by_point(USE_TP_DRINK_CONFIRM)
             elif image_match(ctx.ctrl.get_screen(to_gray=True), REF_RECOVER_TP_3).find_match:
                 ctx.ctrl.click_by_point(USE_TP_DRINK_RESULT_CLOSE)
+        if title_text == TITLE[28]:
+            ctx.ctrl.click(350, 435, '选择普通模式')
+            time.sleep(0.5)
+            ctx.ctrl.click(510, 1190, '确认')
+
         time.sleep(1)
