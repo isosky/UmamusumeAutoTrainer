@@ -115,8 +115,8 @@ def script_info(ctx: UmamusumeContext):
                         else:
                             ctx.ctrl.click_by_point(
                                 TACTIC_LIST[ctx.cultivate_detail.tactic_list[int((date - 1) / 24)] - 1])
-                else:
-                    ctx.ctrl.click_by_point(TACTIC_LIST[ctx.cultivate_detail.tactic_list[2] - 1])
+                    else:
+                        ctx.ctrl.click_by_point(TACTIC_LIST[ctx.cultivate_detail.tactic_list[2] - 1])
             time.sleep(0.5)
             ctx.ctrl.click_by_point(BEFORE_RACE_CHANGE_TACTIC_CONFIRM)
         if title_text == TITLE[18]:
@@ -141,11 +141,20 @@ def script_info(ctx: UmamusumeContext):
             else:
                 ctx.ctrl.click_by_point(TO_RECOVER_TP)
         if title_text == TITLE[27]:
-            if image_match(ctx.ctrl.get_screen(to_gray=True), REF_RECOVER_TP_1).find_match:
-                ctx.ctrl.click_by_point(USE_TP_DRINK)
-            elif image_match(ctx.ctrl.get_screen(to_gray=True), REF_RECOVER_TP_2).find_match:
-                ctx.ctrl.click_by_point(USE_TP_DRINK_CONFIRM)
-            elif image_match(ctx.ctrl.get_screen(to_gray=True), REF_RECOVER_TP_3).find_match:
+            if not ctx.cultivate_detail.allow_diamond_recover_tp:
+                if image_match(ctx.ctrl.get_screen(to_gray=True), REF_RECOVER_TP_1).find_match:
+                    ctx.ctrl.click_by_point(USE_TP_DRINK)
+                elif image_match(ctx.ctrl.get_screen(to_gray=True), REF_RECOVER_TP_2).find_match:
+                    ctx.ctrl.click_by_point(USE_TP_DRINK_CONFIRM)
+                elif image_match(ctx.ctrl.get_screen(to_gray=True), REF_RECOVER_TP_3).find_match:
+                    ctx.ctrl.click_by_point(USE_TP_DRINK_RESULT_CLOSE)
+            else:
+                ctx.ctrl.click_by_point(USE_TP_DIAMOND)
+                time.sleep(0.5)
+                ctx.ctrl.click_by_point(USE_TP_DIAMOND_PLUS)
+                time.sleep(0.5)
+                ctx.ctrl.click_by_point(USE_TP_DIAMOND_CONFIRM)
+                time.sleep(0.5)
                 ctx.ctrl.click_by_point(USE_TP_DRINK_RESULT_CLOSE)
         if title_text == TITLE[28]:
             ctx.ctrl.click(350, 435, '选择普通模式')

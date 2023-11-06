@@ -14,6 +14,7 @@ class TaskDetail:
     learn_skill_threshold: int
     learn_skill_only_user_provided: bool
     allow_recover_tp: bool
+    allow_diamond_recover_tp: bool
     cultivate_progress_info: dict
     extra_weight: list
 
@@ -53,11 +54,9 @@ def build_task(task_execute_mode: TaskExecuteMode, task_type: int,
     td.learn_skill_threshold = attachment_data['learn_skill_threshold']
     td.learn_skill_only_user_provided = attachment_data['learn_skill_only_user_provided']
     td.allow_recover_tp = attachment_data['allow_recover_tp']
+    td.allow_diamond_recover_tp = attachment_data['allow_diamond_recover_tp']
     td.extra_weight = attachment_data['extra_weight']
     td.cultivate_result = {}
     # td.scenario_name = attachment_data['scenario_name']
     ut.detail = td
     return ut
-
-
-

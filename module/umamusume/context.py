@@ -156,6 +156,7 @@ class CultivateContextDetail:
     learn_skill_only_user_provided: bool
     learn_skill_before_race: bool
     allow_recover_tp: bool
+    allow_diamond_recover_tp: bool
     parse_factor_done: bool
     extra_weight: list
 
@@ -173,6 +174,7 @@ class CultivateContextDetail:
         self.clock_use_limit = 0
         self.clock_used = 0
         self.allow_recover_tp = False
+        self.allow_diamond_recover_tp = False
         self.parse_factor_done = False
         self.extra_weight = []
 
@@ -206,11 +208,7 @@ def build_context(task: UmamusumeTask, ctrl) -> UmamusumeContext:
         detail.learn_skill_threshold = task.detail.learn_skill_threshold
         detail.learn_skill_only_user_provided = task.detail.learn_skill_only_user_provided
         detail.allow_recover_tp = task.detail.allow_recover_tp
+        detail.allow_diamond_recover_tp = task.detail.allow_diamond_recover_tp
         detail.extra_weight = task.detail.extra_weight
         ctx.cultivate_detail = detail
     return ctx
-
-
-
-
-

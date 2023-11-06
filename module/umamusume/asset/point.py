@@ -20,8 +20,8 @@ CULTIVATE_RACE_SUMMER = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, N
 
 RETURN_TO_CULTIVATE_MAIN_MENU = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(90, 1230), "返回训练主界面", None)
 CULTIVATE_GOAL_RACE_INTER_1 = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(508, 1081), "进入生涯赛详细界面", None)
-CULTIVATE_GOAL_RACE_INTER_2 = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(360,1082), "开始生涯赛", None)
-CULTIVATE_GOAL_RACE_INTER_3 = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(520,920), "开始生涯赛-确认", None)
+CULTIVATE_GOAL_RACE_INTER_2 = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(360, 1082), "开始生涯赛", None)
+CULTIVATE_GOAL_RACE_INTER_3 = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(520, 920), "开始生涯赛-确认", None)
 
 BEFORE_RACE_CHANGE_TACTIC = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(575, 745), "比赛前-更改战术", None)
 BEFORE_RACE_CHANGE_TACTIC_4 = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(585, 780), "更改战术-领跑", None)
@@ -33,25 +33,25 @@ TACTIC_LIST = [BEFORE_RACE_CHANGE_TACTIC_1, BEFORE_RACE_CHANGE_TACTIC_2, BEFORE_
 BEFORE_RACE_CHANGE_TACTIC_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(515, 920), "更改战术-确认", None)
 BEFORE_RACE_START = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(465, 1175), "比赛前-开始比赛", None)
 BEFORE_RACE_SKIP = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(255, 1175), "比赛前-跳过比赛", None)
-IN_RACE_UMA_LIST_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(360,1175), "比赛马娘列表-确认", None)
+IN_RACE_UMA_LIST_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(360, 1175), "比赛马娘列表-确认", None)
 
-IN_RACE_SKIP = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(560,1225), "比赛中-跳过", None)
+IN_RACE_SKIP = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(560, 1225), "比赛中-跳过", None)
 SKIP = ClickPoint(ClickPointType.CLICK_POINT_TYPE_TEMPLATE, BTN_SKIP, None, "跳过", None)
 SCENARIO_SKIP_OFF = ClickPoint(ClickPointType.CLICK_POINT_TYPE_TEMPLATE, BTN_SKIP_OFF, None, "跳过", None)
 SCENARIO_SKIP_SPEED_1 = ClickPoint(ClickPointType.CLICK_POINT_TYPE_TEMPLATE, BTN_SKIP_SPEED_1, None, "跳过", None)
 
-SCENARIO_SHORTEN_SET_2 = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(350,630), "事件缩短设定-全部", None)
-SCENARIO_SHORTEN_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(360,925), "事件缩短设定-确认", None)
-CULTIVATE_CATCH_DOLL_START = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(365,1117), "抓娃娃机-开始", None)
-CULTIVATE_CATCH_DOLL_RESULT_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(365,1185), "抓娃娃机-结果确认", None)
+SCENARIO_SHORTEN_SET_2 = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(350, 630), "事件缩短设定-全部", None)
+SCENARIO_SHORTEN_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(360, 925), "事件缩短设定-确认", None)
+CULTIVATE_CATCH_DOLL_START = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(365, 1117), "抓娃娃机-开始", None)
+CULTIVATE_CATCH_DOLL_RESULT_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(365, 1185), "抓娃娃机-结果确认", None)
 
-RACE_RESULT_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(370,1150), "比赛结果-确认", None)
-RACE_REWARD_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(520,1195), "比赛奖励-确认", None)
-GOAL_ACHIEVE_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(370,1110), "目标达成-确认", None)
-GOAL_FAIL_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(370,1190), "目标未达成-确认", None)
-NEXT_GOAL_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(360,1110), "下一个目标-确认", None)
+RACE_RESULT_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(370, 1150), "比赛结果-确认", None)
+RACE_REWARD_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(520, 1195), "比赛奖励-确认", None)
+GOAL_ACHIEVE_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(370, 1110), "目标达成-确认", None)
+GOAL_FAIL_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(370, 1190), "目标未达成-确认", None)
+NEXT_GOAL_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(360, 1110), "下一个目标-确认", None)
 
-CULTIVATE_EXTEND_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(360,915), "因子继承-确认", None)
+CULTIVATE_EXTEND_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(360, 915), "因子继承-确认", None)
 
 TRAINING_SELECT_SPEED = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(105, 1085), "训练-速度", None)
 TRAINING_SELECT_STAMINA = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(235, 1085), "训练-耐力", None)
@@ -62,27 +62,27 @@ TRAINING_SELECT_INTELLIGENCE = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDI
 TRAINING_POINT_LIST = [TRAINING_SELECT_SPEED, TRAINING_SELECT_STAMINA, TRAINING_SELECT_POWER,
                        TRAINING_SELECT_WILL, TRAINING_SELECT_INTELLIGENCE]
 
-INFO_SUMMER_REST_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(520,835), "休息-夏合宿-确认", None)
-NETWORK_ERROR_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE,None, Coordinate(520,835), "网络异常-确认", None)
-SKIP_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE,None, Coordinate(520,835), "跳过-确认", None)
+INFO_SUMMER_REST_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(520, 835), "休息-夏合宿-确认", None)
+NETWORK_ERROR_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(520, 835), "网络异常-确认", None)
+SKIP_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(520, 835), "跳过-确认", None)
 CULTIVATE_OPERATION_COMMON_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(520, 835), "育成操作通用确认", None)
 RACE_RECOMMEND_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(365, 1185), "赛事推荐功能确认", None)
 CULTIVATE_TRIP_WITH_FRIEND = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(370, 455), "外出旅行-选择友人", None)
-RACE_FAIL_CONTINUE_USE_CLOCK = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE,None, Coordinate(520,905), "使用闹钟-确认", None)
-RACE_FAIL_CONTINUE_CANCEL = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE,None, Coordinate(200,905), "使用闹钟-取消", None)
-CULTIVATE_RECEIVE_CUP_CLOSE = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE,None, Coordinate(365,920), "获得奖杯-关闭", None)
+RACE_FAIL_CONTINUE_USE_CLOCK = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(520, 905), "使用闹钟-确认", None)
+RACE_FAIL_CONTINUE_CANCEL = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(200, 905), "使用闹钟-取消", None)
+CULTIVATE_RECEIVE_CUP_CLOSE = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(365, 920), "获得奖杯-关闭", None)
 
 CULTIVATE_FINISH_LEARN_SKILL = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(215, 1050), "育成完成-学习技能", None)
-CULTIVATE_FINISH_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE,None, Coordinate(512,1050), "育成完成-确认", None)
-CULTIVATE_FINISH_CONFIRM_AGAIN = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE,None, Coordinate(520,924), "育成完成-再次确认（放弃剩余技能pt）", None)
+CULTIVATE_FINISH_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(512, 1050), "育成完成-确认", None)
+CULTIVATE_FINISH_CONFIRM_AGAIN = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(520, 924), "育成完成-再次确认（放弃剩余技能pt）", None)
 
 
-GET_TITLE_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE,None, Coordinate(350,1195), "获取称号-确认", None)
-CULTIVATE_RESULT_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE,None, Coordinate(360,1185), "育成结果-确认", None)
+GET_TITLE_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(350, 1195), "获取称号-确认", None)
+CULTIVATE_RESULT_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(360, 1185), "育成结果-确认", None)
 CULTIVATE_FINISH_RETURN_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(190, 835), "育成结束-返回", None)
-CULTIVATE_LEARN_SKILL_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE,None, Coordinate(360,1082), "技能学习-确认", None)
-CULTIVATE_LEARN_SKILL_CONFIRM_AGAIN = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE,None, Coordinate(530,1190), "技能学习-再次确认", None)
-CULTIVATE_LEARN_SKILL_DONE_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE,None, Coordinate(359,832), "技能学习-再次确认", None)
+CULTIVATE_LEARN_SKILL_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(360, 1082), "技能学习-确认", None)
+CULTIVATE_LEARN_SKILL_CONFIRM_AGAIN = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(530, 1190), "技能学习-再次确认", None)
+CULTIVATE_LEARN_SKILL_DONE_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(359, 832), "技能学习-再次确认", None)
 RETURN_TO_CULTIVATE_FINISH = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(90, 1190), "返回育成界面", None)
 
 CULTIVATE_FAN_NOT_ENOUGH_RETURN = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(200, 915), "目标粉丝数不足-返回", None)
@@ -104,3 +104,7 @@ USE_TP_DRINK = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coor
 USE_TP_DRINK_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(525, 920), "使用tp饮料-确认", None)
 USE_TP_DRINK_RESULT_CLOSE = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(360, 835), "回复完成-关闭", None)
 
+
+USE_TP_DIAMOND = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(610, 180), "使用钻石", None)
+USE_TP_DIAMOND_PLUS = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(523, 673), "点使用钻石加号", None)
+USE_TP_DIAMOND_CONFIRM = ClickPoint(ClickPointType.CLICK_POINT_TYPE_COORDINATE, None, Coordinate(520, 920), "点使用钻石加号", None)
