@@ -109,7 +109,7 @@ def script_info(ctx: UmamusumeContext):
             date = ctx.cultivate_detail.turn_info.date
             if date != -1:
                 if date <= 72:
-                    if ctx.task.task_desc != 'wanshansiji':
+                    if ctx.task.task_desc != '大赛':
                         if date == 56 or date == 44:
                             ctx.ctrl.click_by_point(TACTIC_LIST[2])
                         else:

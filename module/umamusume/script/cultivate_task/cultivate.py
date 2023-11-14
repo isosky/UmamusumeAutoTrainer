@@ -89,6 +89,20 @@ def script_cultivate_training_select(ctx: UmamusumeContext):
     if ctx.cultivate_detail.turn_info.turn_operation is not None:
         if (ctx.cultivate_detail.turn_info.turn_operation.turn_operation_type ==
                 TurnOperationType.TURN_OPERATION_TYPE_TRAINING):
+            # 黄金船特殊处理 当前回合是训练，且连点了5次以上
+            _date = ctx.cultivate_detail.turn_info.date
+            log.debug(ctx.cultivate_detail.click_times)
+            if _date not in ctx.cultivate_detail.click_times:
+                ctx.cultivate_detail.click_times[_date] = 0
+            elif ctx.cultivate_detail.click_times[_date] > 5:
+                log.info("黄金船育成特殊处理")
+                for i in range(len(TRAINING_POINT_LIST)):
+                    ctx.ctrl.click_by_point(TRAINING_POINT_LIST[i])
+                    time.sleep(0.5)
+                return
+            else:
+                ctx.cultivate_detail.click_times[_date] += 1
+
             ctx.ctrl.click_by_point(
                 TRAINING_POINT_LIST[ctx.cultivate_detail.turn_info.turn_operation.training_type.value - 1])
             time.sleep(0.5)
@@ -104,6 +118,15 @@ def script_cultivate_training_select(ctx: UmamusumeContext):
         img = ctx.current_screen
         train_type = parse_train_type(ctx, img)
         if train_type == TrainingType.TRAINING_TYPE_UNKNOWN:
+            return
+        # 黄金船单独处理
+        if train_type.name == ctx.cultivate_detail.click_times['last_click']['type']:
+            ctx.cultivate_detail.click_times['last_click']['times'] += 1
+        else:
+            ctx.cultivate_detail.click_times['last_click']['type'] = train_type.name
+            ctx.cultivate_detail.click_times['last_click']['times'] = 0
+        if ctx.cultivate_detail.click_times['last_click']['times'] >= 5:
+            ctx.ctrl.click_by_point(TRAINING_POINT_LIST[train_type.value-1])
             return
         parse_training_result(ctx, img, train_type)
         parse_training_support_card(ctx, img, train_type)
@@ -192,7 +215,7 @@ def script_cultivate_event(ctx: UmamusumeContext):
         img = ctx.ctrl.get_screen()
         event_name, selector_list = parse_cultivate_event(ctx, img)
         choice_index = get_event_choice(ctx, event_name)
-        log.info(">>>>> %s 选择 %d", event_name, choice_index)
+        log.error(f">>>>日期: {ctx.cultivate_detail.turn_info.date} >>>>> {event_name} 选择 {choice_index}")
         # 意外情况容错
         if choice_index - 1 > len(selector_list):
             choice_index = 1
@@ -278,7 +301,7 @@ def script_cultivate_before_race(ctx: UmamusumeContext):
             p_check_tactic = tactic_check_point_list[ctx.cultivate_detail.tactic_list[2] - 1]
         # log.error(date)
         if date == 56 or date == 44:
-            if ctx.task.task_desc != 'wanshansiji':
+            if ctx.task.task_desc != '大赛':
                 p_check_tactic = tactic_check_point_list[2]
         if compare_color_equal(p_check_tactic, [170, 170, 170]):
             ctx.ctrl.click_by_point(BEFORE_RACE_CHANGE_TACTIC)
@@ -345,8 +368,12 @@ def script_cultivate_catch_doll_result(ctx: UmamusumeContext):
 
 def script_cultivate_finish(ctx: UmamusumeContext):
     if not ctx.cultivate_detail.learn_skill_done or not ctx.cultivate_detail.cultivate_finish:
-        ctx.cultivate_detail.cultivate_finish = True
-        ctx.ctrl.click_by_point(CULTIVATE_FINISH_LEARN_SKILL)
+        # 临时增加一下大赛，自己学技能
+        if ctx.task.task_desc == '大赛':
+            ctx.task.end_task(TaskStatus.TASK_STATUS_SUCCESS, EndTaskReason.COMPLETE)
+        else:
+            ctx.cultivate_detail.cultivate_finish = True
+            ctx.ctrl.click_by_point(CULTIVATE_FINISH_LEARN_SKILL)
     else:
         ctx.ctrl.click_by_point(CULTIVATE_FINISH_CONFIRM)
 

@@ -159,6 +159,7 @@ class CultivateContextDetail:
     allow_diamond_recover_tp: bool
     parse_factor_done: bool
     extra_weight: list
+    click_times: dict
 
     def __init__(self):
         self.expect_attribute = None
@@ -177,6 +178,7 @@ class CultivateContextDetail:
         self.allow_diamond_recover_tp = False
         self.parse_factor_done = False
         self.extra_weight = []
+        self.click_times = {'last_click': {"type": '', 'times': 0}}
 
     def reset_skill_learn(self):
         self.learn_skill_done = False

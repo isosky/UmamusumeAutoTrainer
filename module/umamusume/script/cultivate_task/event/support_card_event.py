@@ -6,7 +6,7 @@ def choose_first_from_two(ctx: UmamusumeContext) -> int:
     return 1
 
 
-def choose_two_from_two(ctx: UmamusumeContext) -> int:
+def choose_second_from_two(ctx: UmamusumeContext) -> int:
     return 2
 
 
@@ -14,11 +14,11 @@ def choose_first_from_three(ctx: UmamusumeContext) -> int:
     return 1
 
 
-def choose_two_from_three(ctx: UmamusumeContext) -> int:
+def choose_second_from_three(ctx: UmamusumeContext) -> int:
     return 2
 
 
-def choose_three_from_three(ctx: UmamusumeContext) -> int:
+def choose_third_from_three(ctx: UmamusumeContext) -> int:
     return 3
 
 
@@ -81,3 +81,17 @@ def dzyy_2(ctx: UmamusumeContext) -> int:
         return 2
     else:
         return 1
+
+
+def cjxl_1(ctx: UmamusumeContext) -> int:
+    """
+    选项1：体力+15，羁绊加5
+
+    选项2：耐力+10，羁绊加5
+
+    体力不到80
+    """
+    if ctx.cultivate_detail.turn_info.remain_stamina < 80:
+        return 1
+    else:
+        return 2

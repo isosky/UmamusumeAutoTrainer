@@ -12,7 +12,7 @@ log = logger.get_logger(__name__)
 app_name = 'umamusume'
 task_execute_mode = 1
 task_type = 1
-task_desc = 'wanshansiji'
+task_desc = '大赛'
 cron_job_config = None
 race_list_caoshangfei = [2401, 3104, 3607, 4409, 5407, 5605, 6807, 7008]
 race_list_dahechiji = [1701, 2303, 2703, 2905, 3103, 3303, 3403,
@@ -37,13 +37,18 @@ learn_skill_list_zhongpao = ['圆弧艺术家', '弧线大师', '东京赛场', 
 
 
 race_list_mubaimaikun = [2203, 2401, 2503, 2903, 3404, 4804, 5101, 5407, 6602, 7008, 7204]
-expect_attribute_mubaimaikun = [1100, 700, 600, 250, 300]
+expect_attribute_mubaimaikun = [1100, 700, 600, 150, 300]
 learn_skill_list_mubaimaikun = ['圆弧艺术家', '弧线大师', '东京赛场', '最后冲刺', '春季优俊少女', '逆时针', '胜利射击！', '弯道能手', '长距离弯道', '标准距离', '中距离直线', '中距离弯道', '良场地']
 
 
 race_list_mubailaien = [2203, 2401, 2903, 4202, 5101, 5407, 5605, 6602, 6807, 7008]
-expect_attribute_mubailaien = [1100, 800, 600, 250, 300]
+expect_attribute_mubailaien = [1100, 800, 600, 150, 300]
 learn_skill_list_mubailaien = ['圆弧艺术家', '弧线大师', '东京赛场', '最后冲刺', '春季优俊少女', '逆时针', '胜利射击！', '弯道能手', '长距离弯道', '标准距离', '中距离直线', '中距离弯道', '良场地']
+
+
+race_list_huangjinchuan = [3404, 3607, 4608, 5801]
+expect_attribute_huangjinchuan = [1150, 800, 1050, 100, 200]
+learn_skill_list_huangjinchuan = ['圆弧艺术家', '弧线大师', '东京赛场', '最后冲刺', '春季优俊少女', '逆时针', '胜利射击！', '弯道能手', '长距离弯道', '标准距离', '中距离直线', '中距离弯道', '良场地']
 
 
 # 一颗安心糖
@@ -79,6 +84,10 @@ attachment_data_mubailaien = {'expect_attribute': expect_attribute_mubailaien, '
                               'learn_skill_only_user_provided': False, 'extra_weight': [[0.7, 1, 0, 0, 0], [0.7, 1, 0, 0, 0], [0, 0, 0, 0, 0]]}
 
 
+attachment_data_huangjinchuan = {'expect_attribute': expect_attribute_huangjinchuan, 'follow_support_card_name': '必杀技！双胡萝卜拳！', 'follow_support_card_level': 50, 'extra_race_list': race_list_huangjinchuan,
+                                 'learn_skill_list': learn_skill_list_huangjinchuan, 'tactic_list': [1, 1, 1], 'clock_use_limit': 3, 'learn_skill_threshold': 2000, 'allow_recover_tp': True, 'allow_diamond_recover_tp': True,
+                                 'learn_skill_only_user_provided': False, 'extra_weight': [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]}
+
 register_app(UmamusumeManifest)
 app_config = APP_MANIFEST_LIST[app_name]
 
@@ -86,9 +95,9 @@ app_config = APP_MANIFEST_LIST[app_name]
 log.error("*"*10)
 task_executor = executor.Executor()
 for i in range(1):
-    for k, v in attachment_data_mubailaien.items():
+    for k, v in attachment_data_huangjinchuan.items():
         log.info(f"{k}:{v}")
     task = app_config.build_task(
-        task_execute_mode, task_type, task_desc, cron_job_config, attachment_data_mubailaien)
+        task_execute_mode, task_type, task_desc, cron_job_config, attachment_data_huangjinchuan)
     task_executor.start(task)
     time.sleep(2)

@@ -37,10 +37,10 @@ def get_logger(name) -> Logger:
         file_handler.setFormatter(Formatter(
             ' %(asctime)s  %(levelname)-8s [%(funcName)34s] %(filename)-20s: %(message)s'))
         logger.addHandler(file_handler)
-        file_handler = FileHandler(LOG_TURN_FLIE)
-        file_handler.setLevel('INFO')
-        file_handler.setFormatter(Formatter(
-            ' %(asctime)s  %(levelname)-8s [%(funcName)34s] %(filename)-20s: %(message)s'))
-        logger.addHandler(file_handler)
+        # file_handler = FileHandler(LOG_TURN_FLIE)
+        # file_handler.setLevel('INFO')
+        # file_handler.setFormatter(Formatter(
+        #     ' %(asctime)s  %(levelname)-8s [%(funcName)34s] %(filename)-20s: %(message)s'))
+        # logger.addHandler(file_handler)
 
     return logger
