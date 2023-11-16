@@ -95,3 +95,41 @@ def cjxl_1(ctx: UmamusumeContext) -> int:
         return 1
     else:
         return 2
+
+
+def bcwd_1(ctx: UmamusumeContext) -> int:
+    """
+    选项1：速度+10
+
+    选项2：干劲+1，力量+5，羁绊加5
+
+    干劲不到5选2，否则选1
+    """
+    if ctx.cultivate_detail.turn_info.motivation_level.value < 5:
+        return 2
+    else:
+        return 1
+
+
+def dhdw_1(ctx: UmamusumeContext) -> int:
+    """
+    选项1：干劲+1，体力+5
+
+    选项2：速度+5，力量+5
+
+    干劲不到5选1，否则选2
+    """
+    if ctx.cultivate_detail.turn_info.motivation_level.value < 5:
+        return 1
+    else:
+        return 2
+
+
+def lxlm_1(ctx: UmamusumeContext) -> int:
+    """
+    体力小于70，选2
+    """
+    if ctx.cultivate_detail.turn_info.remain_stamina < 70:
+        return 2
+    else:
+        return 1

@@ -415,7 +415,7 @@ def script_cultivate_learn_skill(ctx: UmamusumeContext):
         ctx.ctrl.swipe(x1=23, y1=1000, x2=23, y2=636, duration=1000, name="")
         time.sleep(1)
 
-    log.debug("当前技能状态：" + str(skill_list))
+    log.error("当前技能状态：" + str(skill_list))
 
     # 将金色技能和其后面的技能绑定
     for i in range(len(skill_list)):
@@ -461,7 +461,7 @@ def script_cultivate_learn_skill(ctx: UmamusumeContext):
         if skill['available'] is False and ctx.cultivate_detail.learn_skill_list.__contains__(skill['skill_name']):
             ctx.cultivate_detail.learn_skill_list.remove(skill['skill_name'])
 
-    log.error(target_skill_list)
+    log.error(f'{ctx.cultivate_detail.turn_info.date} 本次需要学习的技能为：{target_skill_list}')
     # 点技能
     while True:
         img = ctx.ctrl.get_screen()
@@ -474,8 +474,8 @@ def script_cultivate_learn_skill(ctx: UmamusumeContext):
         ctx.ctrl.swipe(x1=23, y1=636, x2=23, y2=1000, duration=1000, name="")
         time.sleep(1)
 
-    log.debug("当前待学习的技能：" + str(ctx.cultivate_detail.learn_skill_list))
-    log.debug("当前已学习的技能：" + str([skill['skill_name'] for skill in skill_list if not skill['available']]))
+    log.error("当前待学习的技能：" + str(ctx.cultivate_detail.learn_skill_list))
+    log.error("当前已学习的技能：" + str([skill['skill_name'] for skill in skill_list if not skill['available']]))
 
     ctx.cultivate_detail.learn_skill_done = True
     ctx.cultivate_detail.turn_info.turn_learn_skill_done = True

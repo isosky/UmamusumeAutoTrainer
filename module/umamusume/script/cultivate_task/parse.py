@@ -189,7 +189,7 @@ def parse_train_main_menu_operations_availability(ctx: UmamusumeContext, img):
     train_available = btn_train_check_point[0] > 200
     skill_available = btn_skill_check_point[0] > 200
     if btn_medic_room_check_point[0] > 200 and btn_medic_room_check_point[1] > 200 and btn_medic_room_check_point[
-        2] > 200:
+            2] > 200:
         medic_room_available = True
     else:
         medic_room_available = False
@@ -322,7 +322,7 @@ def find_support_card(ctx: UmamusumeContext, img):
             pos = match_result.matched_area
             support_card_info = img[pos[0][1] - 125:pos[1][1] + 10, pos[0][0] - 140: pos[1][0] + 380]
             img[match_result.matched_area[0][1]:match_result.matched_area[1][1],
-            match_result.matched_area[0][0]:match_result.matched_area[1][0]] = 0
+                match_result.matched_area[0][0]:match_result.matched_area[1][0]] = 0
             support_card_level_img = support_card_info[125:145, 68:111]
             support_card_name_img = support_card_info[63:94, 132:439]
 
@@ -360,7 +360,7 @@ def parse_cultivate_event(ctx: UmamusumeContext, img) -> (str, list[int]):
         if match_result.find_match:
             event_selector_list.append(match_result.center_point)
             img[match_result.matched_area[0][1]:match_result.matched_area[1][1],
-            match_result.matched_area[0][0]:match_result.matched_area[1][0]] = 0
+                match_result.matched_area[0][0]:match_result.matched_area[1][0]] = 0
         else:
             break
     event_selector_list.sort(key=lambda x: x[1])
@@ -383,7 +383,7 @@ def find_race(ctx: UmamusumeContext, img, race_id: int = 0) -> bool:
                                        "选择比赛：" + str(RACE_LIST[race_id][1]))
                         return True
             img[match_result.matched_area[0][1]:match_result.matched_area[1][1],
-            match_result.matched_area[0][0]:match_result.matched_area[1][0]] = 0
+                match_result.matched_area[0][0]:match_result.matched_area[1][0]] = 0
         else:
             break
     return False
@@ -420,7 +420,7 @@ def find_skill(ctx: UmamusumeContext, img, skill: list[str], learn_any_skill: bo
                                 find = True
 
             img[match_result.matched_area[0][1]:match_result.matched_area[1][1],
-            match_result.matched_area[0][0]:match_result.matched_area[1][0]] = 0
+                match_result.matched_area[0][0]:match_result.matched_area[1][0]] = 0
 
         else:
             break
@@ -454,7 +454,11 @@ def get_skill_list(img, skill: list[str]) -> list:
                 skill_in_priority_list = False
                 priority = 99
                 for i in range(len(skill)):
-                    if find_similar_text(text, skill[i], 0.7) != "":
+                    if '少女' in text:
+                        threshold = 0.9
+                    else:
+                        threshold = 0.7
+                    if find_similar_text(text, skill[i], threshold) != "":
                         priority = i
                         skill_in_priority_list = True
                         break
@@ -526,10 +530,10 @@ def parse_factor(ctx: UmamusumeContext):
                 else:
                     break
             img[match_result.matched_area[0][1]:match_result.matched_area[1][1],
-            match_result.matched_area[0][0]:match_result.matched_area[1][0]] = 0
+                match_result.matched_area[0][0]:match_result.matched_area[1][0]] = 0
             factor_info[0] = factor_name
             factor_info[1] = factor_level
-            log.info(f"{factor_name} : {factor_level}")
+            log.error(f"{factor_name} : {factor_level}")
             factor_list.append(factor_info)
         else:
             break

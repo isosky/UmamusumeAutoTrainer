@@ -72,10 +72,10 @@ def script_info(ctx: UmamusumeContext):
             if ctx.cultivate_detail.clock_use_limit > ctx.cultivate_detail.clock_used:
                 ctx.ctrl.click_by_point(RACE_FAIL_CONTINUE_USE_CLOCK)
                 ctx.cultivate_detail.clock_used += 1
+                log.error(f">>>>日期: {ctx.cultivate_detail.turn_info.date} 闹钟限制：{str(ctx.cultivate_detail.clock_use_limit)},已使用{str(ctx.cultivate_detail.clock_used)}")
             else:
                 ctx.ctrl.click_by_point(RACE_FAIL_CONTINUE_CANCEL)
-            log.info("闹钟限制%s,已使用%s", str(ctx.cultivate_detail.clock_use_limit),
-                     str(ctx.cultivate_detail.clock_used))
+            log.error(f">>>>日期: {ctx.cultivate_detail.turn_info.date} 闹钟限制：{str(ctx.cultivate_detail.clock_use_limit)},已使用{str(ctx.cultivate_detail.clock_used)}")
         if title_text == TITLE[4]:
             ctx.ctrl.click_by_point(GET_TITLE_CONFIRM)
         if title_text == TITLE[5]:
