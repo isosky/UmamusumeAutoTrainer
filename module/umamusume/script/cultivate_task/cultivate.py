@@ -86,11 +86,11 @@ def script_cultivate_training_select(ctx: UmamusumeContext):
         ctx.ctrl.click_by_point(RETURN_TO_CULTIVATE_MAIN_MENU)
         return
 
+    _date = ctx.cultivate_detail.turn_info.date
     if ctx.cultivate_detail.turn_info.turn_operation is not None:
         if (ctx.cultivate_detail.turn_info.turn_operation.turn_operation_type ==
                 TurnOperationType.TURN_OPERATION_TYPE_TRAINING):
             # 黄金船特殊处理 当前回合是训练，且连点了5次以上
-            _date = ctx.cultivate_detail.turn_info.date
             log.debug(ctx.cultivate_detail.click_times)
             if _date not in ctx.cultivate_detail.click_times:
                 ctx.cultivate_detail.click_times[_date] = 0
@@ -125,7 +125,7 @@ def script_cultivate_training_select(ctx: UmamusumeContext):
         else:
             ctx.cultivate_detail.click_times['last_click']['type'] = train_type.name
             ctx.cultivate_detail.click_times['last_click']['times'] = 0
-        if ctx.cultivate_detail.click_times['last_click']['times'] >= 5:
+        if ctx.cultivate_detail.click_times['last_click']['times'] >= 5 and _date in ctx.cultivate_detail.click_times and ctx.cultivate_detail.click_times[_date] > 5:
             ctx.ctrl.click_by_point(TRAINING_POINT_LIST[train_type.value-1])
             return
         parse_training_result(ctx, img, train_type)

@@ -454,7 +454,7 @@ def get_skill_list(img, skill: list[str]) -> list:
                 skill_in_priority_list = False
                 priority = 99
                 for i in range(len(skill)):
-                    if '少女' in text:
+                    if '少女' in text or '距离' in text:
                         threshold = 0.9
                     else:
                         threshold = 0.7

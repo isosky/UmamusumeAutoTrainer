@@ -5,6 +5,7 @@ from module.umamusume.manifest import UmamusumeManifest
 import bot.engine.executor as executor
 import bot.base.log as logger
 import time
+import copy
 
 log = logger.get_logger(__name__)
 
@@ -104,11 +105,12 @@ task_desc = '种马'
 
 
 task_executor = executor.Executor()
-for i in range(1):
+for i in range(5):
+    _attachmet = copy.deepcopy(attachment_data_donghaidiwang)
     log.error("**********    新的一盘")
-    for k, v in attachment_data_donghaidiwang.items():
+    for k, v in _attachmet.items():
         log.error(f"{k}:{v}")
     task = app_config.build_task(
-        task_execute_mode, task_type, task_desc, cron_job_config, attachment_data_donghaidiwang)
+        task_execute_mode, task_type, task_desc, cron_job_config, _attachmet)
     task_executor.start(task)
     time.sleep(2)
