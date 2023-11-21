@@ -6,7 +6,7 @@ import numpy as np
 from bot.base.task import TaskStatus, EndTaskReason
 from module.umamusume.asset.point import *
 from module.umamusume.context import TurnInfo
-from module.umamusume.script.cultivate_task.const import SKILL_LEARN_PRIORITY_LIST
+from module.umamusume.script.cultivate_task.const import SKILL_LEARN_PRIORITY_LIST, SKILL_TOW_CIRCLE_LIST
 from module.umamusume.script.cultivate_task.event.manifest import get_event_choice
 from module.umamusume.script.cultivate_task.parse import *
 
@@ -300,9 +300,9 @@ def script_cultivate_before_race(ctx: UmamusumeContext):
         else:
             p_check_tactic = tactic_check_point_list[ctx.cultivate_detail.tactic_list[2] - 1]
         # log.error(date)
-        if date == 56 or date == 44:
-            if ctx.task.task_desc != '大赛':
-                p_check_tactic = tactic_check_point_list[2]
+        # if date == 56 or date == 44:
+        #     if ctx.task.task_desc != '大赛':
+        #         p_check_tactic = tactic_check_point_list[2]
         if compare_color_equal(p_check_tactic, [170, 170, 170]):
             ctx.ctrl.click_by_point(BEFORE_RACE_CHANGE_TACTIC)
             return
@@ -310,10 +310,10 @@ def script_cultivate_before_race(ctx: UmamusumeContext):
     if p_check_skip[0] < 200 and p_check_skip[1] < 200 and p_check_skip[2] < 200:
         ctx.ctrl.click_by_point(BEFORE_RACE_START)
     else:
-        date = ctx.cultivate_detail.turn_info.date
-        if (date == 56 or date == 44) and ctx.task.task_desc == 'wanshansiji':
-            img = ctx.ctrl.get_screen()
-            cv2.imwrite('temp/'+str(date)+"_"+str(int(time.time()))+'.jpg', img)
+        # date = ctx.cultivate_detail.turn_info.date
+        # if (date == 56 or date == 44) and ctx.task.task_desc == 'wanshansiji':
+        #     img = ctx.ctrl.get_screen()
+        #     cv2.imwrite('temp/'+str(date)+"_"+str(int(time.time()))+'.jpg', img)
         ctx.ctrl.click_by_point(BEFORE_RACE_SKIP)
 
 
@@ -326,10 +326,10 @@ def script_in_race(ctx: UmamusumeContext):
 
 
 def script_cultivate_race_result(ctx: UmamusumeContext):
-    date = ctx.cultivate_detail.turn_info.date
-    if (date == 56 or date == 44) and ctx.task.task_desc == 'wanshansiji':
-        img = ctx.ctrl.get_screen()
-        cv2.imwrite('temp/'+str(date)+"_"+str(int(time.time()))+'.jpg', img)
+    # date = ctx.cultivate_detail.turn_info.date
+    # if (date == 56 or date == 44) and ctx.task.task_desc == 'wanshansiji':
+    #     img = ctx.ctrl.get_screen()
+    #     cv2.imwrite('temp/'+str(date)+"_"+str(int(time.time()))+'.jpg', img)
     ctx.ctrl.click_by_point(RACE_RESULT_CONFIRM)
 
 
@@ -456,6 +456,15 @@ def script_cultivate_learn_skill(ctx: UmamusumeContext):
     # 删除已经学会的技能
     for skill in target_skill_list:
         if ctx.cultivate_detail.learn_skill_list.__contains__(skill):
+            # TODO 双圈技能要删除2次
+            if '○' in skill:
+                _skill = skill[:-1]
+            else:
+                _skill = skill
+            if _skill in SKILL_TOW_CIRCLE_LIST:
+                if _skill not in ctx.cultivate_detail.skill_tow_circel_detail:
+                    ctx.cultivate_detail.skill_tow_circel_detail[_skill] = 1
+                    continue
             ctx.cultivate_detail.learn_skill_list.remove(skill)
     for skill in skill_list:
         if skill['available'] is False and ctx.cultivate_detail.learn_skill_list.__contains__(skill['skill_name']):

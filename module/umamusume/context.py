@@ -160,6 +160,7 @@ class CultivateContextDetail:
     parse_factor_done: bool
     extra_weight: list
     click_times: dict
+    skill_tow_circel_detail: dict
 
     def __init__(self):
         self.expect_attribute = None
@@ -179,6 +180,7 @@ class CultivateContextDetail:
         self.parse_factor_done = False
         self.extra_weight = []
         self.click_times = {'last_click': {"type": '', 'times': 0}}
+        self.skill_tow_circel_detail = {}
 
     def reset_skill_learn(self):
         self.learn_skill_done = False

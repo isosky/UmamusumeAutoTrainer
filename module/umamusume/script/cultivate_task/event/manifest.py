@@ -25,6 +25,7 @@ event_map: dict[str, Union[callable, int]] = {
     '夏季集训（第2年）期间': choose_first_from_two,  # 通用
     '夏季集训（第3年）结束': choose_first_from_two,  # 通用
     '保重身体！': choose_first_from_two,  # 通用
+    '神采奕奕！': choose_second_from_two,  # 通用 第二个加体加耐
 
     # 大和赤骥
     '舞蹈课': choose_second_from_two,  # 大和赤骥 1：毅+10,2:速+10
