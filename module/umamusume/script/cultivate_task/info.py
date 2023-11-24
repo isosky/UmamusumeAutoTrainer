@@ -42,7 +42,8 @@ TITLE = [
     "活动剧情解锁",
     "确认",
     "回复训练值",
-    "选择养成难度"
+    "选择养成难度",
+    "选择协助卡"
 ]
 
 
@@ -160,5 +161,7 @@ def script_info(ctx: UmamusumeContext):
             ctx.ctrl.click(350, 435, '选择普通模式')
             time.sleep(0.5)
             ctx.ctrl.click(510, 1190, '确认')
+        if title_text == TITLE[29]:
+            ctx.ctrl.click(719, 1, "")
 
         time.sleep(1)
