@@ -52,9 +52,9 @@ expect_attribute_huangjinchuan = [1150, 800, 1050, 100, 200]
 learn_skill_list_huangjinchuan = ['圆弧艺术家', '弧线大师', '东京赛场', '最后冲刺', '春季优俊少女', '逆时针', '胜利射击！', '弯道能手', '长距离弯道', '标准距离', '中距离直线', '中距离弯道', '良场地']
 
 
-race_list_donghaidiwang = [2401, 3304, 3607, 4506, 4804, 6807]
-expect_attribute_donghaidiwang = [800, 850, 600, 100, 200]
-learn_skill_list_donghaidiwang = ['比赛策略家', '圆弧艺术家', '东京赛场', '最后冲刺', '一鼓作气', '春季优俊少女', '顺时针',  '弯道能手', '长距离弯道', '标准距离',  '长距离弯道', '良场地', '后追直线', '打基础']
+race_list_donghaidiwang = [2203, 2401, 3304, 3607, 4506, 4804, 6807]
+expect_attribute_donghaidiwang = [750, 900, 800, 100, 200]
+learn_skill_list_donghaidiwang = ['比赛策略家', '圆弧艺术家', '东京赛场', '最后冲刺', '一鼓作气', '春季优俊少女', '顺时针',  '弯道能手', '长距离弯道', '标准距离',  '长距离直线', '良场地', '后追直线', '打基础']
 
 # 一颗安心糖
 # 在耀眼景色的前方
@@ -105,7 +105,7 @@ task_desc = '种马'
 
 
 task_executor = executor.Executor()
-for i in range(5):
+for i in range(20):
     _attachmet = copy.deepcopy(attachment_data_donghaidiwang)
     log.error("**********    新的一盘")
     for k, v in _attachmet.items():

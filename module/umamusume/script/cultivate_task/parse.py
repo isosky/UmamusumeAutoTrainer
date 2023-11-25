@@ -402,7 +402,11 @@ def find_skill(ctx: UmamusumeContext, img, skill: list[str], learn_any_skill: bo
                 if not image_match(skill_info_img, REF_SKILL_LEARNED).find_match:
                     skill_name_img = skill_info_img[10: 47, 100: 445]
                     text = ocr_line(skill_name_img)
-                    result = find_similar_text(text, skill, 0.7)
+                    if '俊少女' in text or '标准距离' in text:
+                        threshold = 0.9
+                    else:
+                        threshold = 0.7
+                    result = find_similar_text(text, skill, threshold)
                     # print(text + "->" + result)
                     if result != "" or learn_any_skill:
                         tmp_img = ctx.ctrl.get_screen()
@@ -454,7 +458,7 @@ def get_skill_list(img, skill: list[str]) -> list:
                 skill_in_priority_list = False
                 priority = 99
                 for i in range(len(skill)):
-                    if '俊少女' in text or '距离' in text:
+                    if '俊少女' in text or '标准距离' in text:
                         threshold = 0.9
                     else:
                         threshold = 0.7
