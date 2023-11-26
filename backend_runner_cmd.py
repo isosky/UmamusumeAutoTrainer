@@ -54,7 +54,18 @@ learn_skill_list_huangjinchuan = ['圆弧艺术家', '弧线大师', '东京赛�
 
 race_list_donghaidiwang = [2203, 2401, 3304, 3607, 4506, 4804, 6807]
 expect_attribute_donghaidiwang = [750, 900, 800, 100, 200]
-learn_skill_list_donghaidiwang = ['比赛策略家', '圆弧艺术家', '东京赛场', '最后冲刺', '一鼓作气', '春季优俊少女', '顺时针',  '弯道能手', '长距离弯道', '标准距离',  '长距离直线', '良场地', '后追直线', '打基础']
+learn_skill_list_donghaidiwang = ['比赛策略家', '圆弧艺术家', '东京赛场', '标准距离',  '良场地', '春季优俊少女', '顺时针',
+                                  '大胃储备', '深呼吸', '吞噬体力', '放学后的乐趣', '后方待机',
+                                  '弯道能手', '长距离弯道',  '长距离直线',  '后追直线',
+                                  '一鼓作气', '打基础']
+
+race_list_tebiezhou = [2203, 2401, 3304, 3607, 4506, 4804, 6807]
+expect_attribute_tebiezhou = [800, 900, 800, 100, 200]
+learn_skill_list_tebiezhou = ['比赛策略家', '圆弧艺术家', '东京赛场', '标准距离',  '良场地', '春季优俊少女', '顺时针',
+                              '大胃储备', '深呼吸', '吞噬体力', '放学后的乐趣', '后方待机',
+                              '弯道能手', '长距离弯道',  '长距离直线',  '后追直线',
+                              '一鼓作气', '打基础']
+
 
 # 一颗安心糖
 # 在耀眼景色的前方
@@ -94,9 +105,15 @@ attachment_data_huangjinchuan = {'expect_attribute': expect_attribute_huangjinch
                                  'learn_skill_only_user_provided': False, 'extra_weight': [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]}
 
 
-attachment_data_donghaidiwang = {'uma_name': '东海帝王', 'expect_attribute': expect_attribute_donghaidiwang, 'follow_support_card_name': '要受人喜爱啊', 'follow_support_card_level': 50, 'extra_race_list': race_list_donghaidiwang,
-                                 'learn_skill_list': learn_skill_list_donghaidiwang, 'tactic_list': [3, 3, 3], 'clock_use_limit': 2, 'learn_skill_threshold': 800, 'allow_recover_tp': True, 'allow_diamond_recover_tp': True,
+attachment_data_donghaidiwang = {'uma_name': '东海帝王', 'expect_attribute': expect_attribute_donghaidiwang, 'follow_support_card_name': '不沉舰的进击', 'follow_support_card_level': 50, 'extra_race_list': race_list_donghaidiwang,
+                                 'learn_skill_list': learn_skill_list_donghaidiwang, 'tactic_list': [3, 3, 3], 'clock_use_limit': 1, 'learn_skill_threshold': 800, 'allow_recover_tp': True, 'allow_diamond_recover_tp': True,
                                  'learn_skill_only_user_provided': True, 'extra_weight': [[0.5, 1, 0, 0, 0], [0, 0.5, 0, 0, 0], [0, 0, 0, 0, 0]]}
+
+attachment_data_tebiezhou = {'uma_name': '特别周', 'expect_attribute': expect_attribute_tebiezhou, 'follow_support_card_name': '不沉舰的进击', 'follow_support_card_level': 50,
+                             'extra_race_list': race_list_tebiezhou, 'learn_skill_list': learn_skill_list_tebiezhou, 'tactic_list': [3, 3, 3], 'clock_use_limit': 1,
+                             'learn_skill_threshold': 800, 'allow_recover_tp': True, 'allow_diamond_recover_tp': True, 'learn_skill_only_user_provided': True,
+                             'extra_weight': [[0.5, 1, 0, 0, 0], [0, 0.5, 0, 0, 0], [0, 0, 0, 0, 0]]}
+
 
 register_app(UmamusumeManifest)
 app_config = APP_MANIFEST_LIST[app_name]
@@ -106,7 +123,7 @@ task_desc = '种马'
 
 task_executor = executor.Executor()
 for i in range(20):
-    _attachmet = copy.deepcopy(attachment_data_donghaidiwang)
+    _attachmet = copy.deepcopy(attachment_data_tebiezhou)
     log.error("**********    新的一盘")
     for k, v in _attachmet.items():
         log.error(f"{k}:{v}")
