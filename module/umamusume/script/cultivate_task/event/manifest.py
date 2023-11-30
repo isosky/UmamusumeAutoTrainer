@@ -26,6 +26,7 @@ event_map: dict[str, Union[callable, int]] = {
     '夏季集训（第3年）结束': choose_first_from_two,  # 通用
     '保重身体！': choose_first_from_two,  # 通用
     '神采奕奕！': choose_second_from_two,  # 通用 第二个加体加耐
+    '不许逞强！': choose_first_from_two,  # 通用
 
     # 大和赤骥
     '舞蹈课': choose_second_from_two,  # 大和赤骥 1：毅+10,2:速+10
@@ -52,8 +53,25 @@ event_map: dict[str, Union[callable, int]] = {
     '在夜晚的公园玩要吧': choose_second_from_two,  # 黄金船 1：10毅，2：10速
     '在夜晚的公园玩耍吧': choose_second_from_two,  # 黄金船 1：10毅，2：10速
 
+    # 特别周
+    '卡拉OK美食': choose_first_from_two,
+    '摆什么姿势好呢？': choose_first_from_two,
+    '青春网球好时光': choose_first_from_two,  # 特别周 1：10速，2：10耐
+    '今天如此，明天依然': choose_first_from_two,  # 特别周 1：20速，2：20智
+    '信念，寄托于服装': choose_first_from_two,
+    '正因为特别': choose_first_from_two,
+    '在食堂吃到肚皮鼓鼓': choose_second_from_two,
+    '午后的报恩': choose_first_from_two,
+
+
+
+
     # 小栗帽
     '背负的信念': choose_first_from_two,  # 小栗帽，1：10耐10力，2：20智
+
+    # 黄金船 - 不沉舰的进击
+    '复活吧！黄金船特制酱汁炒面！': choose_first_from_two,
+    '冒险家黄金船': choose_first_from_two,
 
     # 东海帝王 - 飞跃地平线
     '力量的奥秘！': choose_second_from_two,  # 东海帝王 2：30体，可能长胖

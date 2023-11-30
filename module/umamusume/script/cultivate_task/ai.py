@@ -18,13 +18,13 @@ def get_operation(ctx: UmamusumeContext) -> TurnOperation | None:
     attribute_result_max = np.max(attribute_result)
     attribute_result_min = np.min(attribute_result)
     normalized_attribute_result = (attribute_result - attribute_result_min) / (
-            attribute_result_max - attribute_result_min)
+        attribute_result_max - attribute_result_min)
 
     support_card_max = np.max(support_card_result)
     support_card_min = np.min(support_card_result)
     if support_card_max != support_card_min:
         normalized_support_card_result = (support_card_result - support_card_min) / (
-                support_card_max - support_card_min)
+            support_card_max - support_card_min)
     else:
         normalized_support_card_result = [1, 1, 1, 1, 1]
 
@@ -32,7 +32,7 @@ def get_operation(ctx: UmamusumeContext) -> TurnOperation | None:
     training_level_min = np.min(training_level_result)
     if training_level_min != training_level_max:
         normalized_training_level_result = (training_level_result - training_level_min) / (
-                training_level_max - training_level_min)
+            training_level_max - training_level_min)
     else:
         normalized_training_level_result = [1, 1, 1, 1, 1]
 
@@ -77,7 +77,18 @@ def get_operation(ctx: UmamusumeContext) -> TurnOperation | None:
         training_score.append(normalized_attribute_result[i] * attr_weight + normalized_support_card_result[i] *
                               support_card_weight + normalized_training_level_result[i] * training_level_weight)
     log.debug("训练综合得分：" + str(training_score))
-
+    # ctx.task.detail.prior_support_card_list
+    ctx.cultivate_detail.turn_info.training_info_list[0].support_card_info_list
+    for pi in range(len(ctx.cultivate_detail.turn_info.training_info_list)):
+        temp = ctx.cultivate_detail.turn_info.training_info_list[pi].support_card_info_list
+        for _temp in temp:
+            if not _temp.has_event:
+                continue
+            _name = _temp.name.split('_')[1]
+            if _name in ctx.task.detail.prior_support_card_list:
+                log.error(f'{_name} 在训练 {pi} 里面，且有技能')
+                training_score[pi] += 1
+    log.debug("加 技能卡后 训练综合得分：" + str(training_score))
     # 出道战成功才能参加比赛
     if ctx.cultivate_detail.debut_race_win:
         extra_race_this_turn = [i for i in ctx.cultivate_detail.extra_race_list if str(i)[:2]
@@ -173,7 +184,7 @@ def get_training_basic_attribute_score(ctx: UmamusumeContext, turn_info: TurnInf
             turn_expect_attribute_item = cultivate_expect_attribute[i]
         turn_expect_attribute[i] = turn_expect_attribute_item if turn_expect_attribute_item > 0 else 1
     turn_uma_attr = [turn_info.uma_attribute.speed, turn_info.uma_attribute.stamina, turn_info.uma_attribute.power,
-              turn_info.uma_attribute.will, turn_info.uma_attribute.intelligence]
+                     turn_info.uma_attribute.will, turn_info.uma_attribute.intelligence]
     result = []
     expect_attribute_all_complete = all(x >= y for x, y in zip(turn_uma_attr, cultivate_expect_attribute))
     if expect_attribute_all_complete:

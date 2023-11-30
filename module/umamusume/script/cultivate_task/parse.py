@@ -1,10 +1,11 @@
 import re
 from difflib import SequenceMatcher
+import time
 
 import cv2
 import numpy
 
-from bot.recog.image_matcher import image_match, compare_color_equal
+from bot.recog.image_matcher import image_match, compare_color_equal, template_match
 from bot.recog.ocr import ocr_line, find_similar_text
 from module.umamusume.asset.race_data import RACE_LIST
 from module.umamusume.context import UmamusumeContext, SupportCardInfo
@@ -246,7 +247,20 @@ def parse_training_support_card(ctx: UmamusumeContext, img, train_type: Training
         elif image_match(support_card_icon, REF_SUPPORT_CARD_TYPE_FRIEND).find_match:
             support_card_type = SupportCardType.SUPPORT_CARD_TYPE_FRIEND
         if support_card_favor_process is not SupportCardFavorLevel.SUPPORT_CARD_FAVOR_LEVEL_UNKNOWN:
-            info = SupportCardInfo(card_type=support_card_type,
+            # 获得支援卡名称
+            support_card_name = 'support_card'
+            for i in range(len(UMA_SUPPORT_CARD_LIST)):
+                if template_match(support_card_icon, UMA_SUPPORT_CARD_LIST[i].template_image, 0.85).find_match:
+                    log.info(UMA_SUPPORT_CARD_LIST[i].template_name)
+                    support_card_name = UMA_SUPPORT_CARD_LIST[i].template_name
+                    break
+            if support_card_name == 'support_card':
+                # 未命中，保存一下
+                support_card_pure = support_card_icon[10:85, 10:90]
+                file_name = str(int(time.time()))
+                cv2.imwrite('resource/unknown_support/' + file_name+'.png', support_card_pure)
+
+            info = SupportCardInfo(name=support_card_name, card_type=support_card_type,
                                    favor=support_card_favor_process,
                                    has_event=support_card_event_available)
             ctx.cultivate_detail.turn_info.training_info_list[train_type.value - 1].support_card_info_list.append(info)

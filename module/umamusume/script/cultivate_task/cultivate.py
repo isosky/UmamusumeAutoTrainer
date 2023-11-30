@@ -424,6 +424,12 @@ def script_cultivate_learn_skill(ctx: UmamusumeContext):
 
     # 按照优先级排列
     skill_list = sorted(skill_list, key=lambda x: x["priority"])
+
+    # 删除黑名单
+    for skill in skill_list:
+        if skill['skill_name'] in ctx.task.detail.black_skill_list:
+            log.debug(f"{skill['skill_name']} 在黑名单中，移除")
+            skill["available"] = False
     # TODO: 暂时没办法处理一个技能可以点多次的情况
     img = ctx.ctrl.get_screen()
     total_skill_point_text = re.sub("\\D", "", ocr_line(img[400: 440, 490: 665]))

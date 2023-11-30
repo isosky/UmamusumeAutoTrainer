@@ -17,6 +17,8 @@ class TaskDetail:
     allow_diamond_recover_tp: bool
     cultivate_progress_info: dict
     extra_weight: list
+    prior_support_card_list: list[str]
+    black_skill_list: list[str]
 
 
 class EndTaskReason(Enum):
@@ -56,6 +58,8 @@ def build_task(task_execute_mode: TaskExecuteMode, task_type: int,
     td.allow_recover_tp = attachment_data['allow_recover_tp']
     td.allow_diamond_recover_tp = attachment_data['allow_diamond_recover_tp']
     td.extra_weight = attachment_data['extra_weight']
+    td.prior_support_card_list = attachment_data['prior_support_card_list']
+    td.black_skill_list = attachment_data['black_skill_list']
     td.cultivate_result = {}
     # td.scenario_name = attachment_data['scenario_name']
     ut.detail = td

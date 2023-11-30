@@ -48,7 +48,7 @@ class TrainingInfo:
         text = "此训练附带支援卡列表：["
         for c in self.support_card_info_list:
             if c.favor != SupportCardFavorLevel.SUPPORT_CARD_FAVOR_LEVEL_UNKNOWN:
-                text += "[支援卡名称：" + str(c.name) + "支援卡类型：" + str(c.card_type.name) + ", 支援卡羁绊阶段：" + str(c.favor.name) + "] "
+                text += "[支援卡名称：" + str(c.name) + ", 支援卡类型：" + str(c.card_type.name) + ", 支援卡羁绊阶段：" + str(c.favor.name) + "] "
         text += "]"
         log.info(text)
 

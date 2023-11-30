@@ -66,6 +66,8 @@ learn_skill_list_tebiezhou = ['比赛策略家', '圆弧艺术家', '东京赛�
                               '弯道能手', '长距离弯道',  '长距离直线',  '后追直线',
                               '一鼓作气', '打基础']
 
+prior_support_card_list_tebiezhou = ['lingyamaxun']
+
 
 # 一颗安心糖
 # 在耀眼景色的前方
@@ -107,23 +109,25 @@ attachment_data_huangjinchuan = {'expect_attribute': expect_attribute_huangjinch
 
 attachment_data_donghaidiwang = {'uma_name': '东海帝王', 'expect_attribute': expect_attribute_donghaidiwang, 'follow_support_card_name': '不沉舰的进击', 'follow_support_card_level': 50, 'extra_race_list': race_list_donghaidiwang,
                                  'learn_skill_list': learn_skill_list_donghaidiwang, 'tactic_list': [3, 3, 3], 'clock_use_limit': 1, 'learn_skill_threshold': 800, 'allow_recover_tp': True, 'allow_diamond_recover_tp': True,
-                                 'learn_skill_only_user_provided': True, 'extra_weight': [[0.5, 1, 0, 0, 0], [0, 0.5, 0, 0, 0], [0, 0, 0, 0, 0]]}
+                                 'learn_skill_only_user_provided': True,
+                                 'prior_support_card_list': prior_support_card_list_tebiezhou, 'extra_weight': [[0.5, 1, 0, 0, 0], [0, 0.5, 0, 0, 0], [0, 0, 0, 0, 0]]}
 
 attachment_data_tebiezhou = {'uma_name': '特别周', 'expect_attribute': expect_attribute_tebiezhou, 'follow_support_card_name': '不沉舰的进击', 'follow_support_card_level': 50,
                              'extra_race_list': race_list_tebiezhou, 'learn_skill_list': learn_skill_list_tebiezhou, 'tactic_list': [3, 3, 3], 'clock_use_limit': 1,
                              'learn_skill_threshold': 800, 'allow_recover_tp': True, 'allow_diamond_recover_tp': True, 'learn_skill_only_user_provided': True,
-                             'extra_weight': [[0.5, 1, 0, 0, 0], [0, 0.5, 0, 0, 0], [0, 0, 0, 0, 0]]}
+                             'prior_support_card_list': prior_support_card_list_tebiezhou, 'extra_weight': [[0.5, 1, 0, 0, 0], [0, 0.5, 0, 0, 0], [0, 0, 0, 0, 0]]}
 
 
 register_app(UmamusumeManifest)
 app_config = APP_MANIFEST_LIST[app_name]
 
 task_desc = '种马'
-
+black_skill_list_tebiezhou = ['璀璨流星', 'Nemesis', '追击', '观察能力']
+attachment_data_donghaidiwang['black_skill_list'] = black_skill_list_tebiezhou
 
 task_executor = executor.Executor()
 for i in range(20):
-    _attachmet = copy.deepcopy(attachment_data_tebiezhou)
+    _attachmet = copy.deepcopy(attachment_data_donghaidiwang)
     log.error("**********    新的一盘")
     for k, v in _attachmet.items():
         log.error(f"{k}:{v}")
